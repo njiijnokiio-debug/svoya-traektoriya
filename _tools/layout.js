@@ -69,7 +69,7 @@ function header(active, base = '') {
   <a class="skip-link" href="#main">Перейти к содержанию</a>
   <div class="name-banner" data-name-banner hidden>
     <div class="container name-banner__inner">
-      <p>${icon('info')}<span>Центр «кУМкват» теперь — <strong>«Своя траектория»</strong>. Это тот же центр и те же специалисты. <a href="${base}about.html#renaming">Подробнее</a></span></p>
+      <p>${icon('info')}<span></span></p>
       <button class="name-banner__close" type="button" data-name-banner-close aria-label="Скрыть сообщение">${icon('close')}</button>
     </div>
   </div>

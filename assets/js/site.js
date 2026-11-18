@@ -30,7 +30,6 @@
   function initNameBanner() {
     var banner = $('[data-name-banner]');
     if (!banner) return;
-    if (store.getRaw('st_name_banner_hidden') !== '1') banner.hidden = false;
     var close = $('[data-name-banner-close]', banner);
     if (close) {
       close.addEventListener('click', function () {
