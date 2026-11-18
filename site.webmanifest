@@ -1,0 +1,23 @@
+{
+  "name": "Своя траектория",
+  "short_name": "Своя траектория",
+  "description": "Центр речи, развития и семейного образования в Москве",
+  "lang": "ru",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fbf9f4",
+  "theme_color": "#1c312c",
+  "icons": [
+    {
+      "src": "/assets/img/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

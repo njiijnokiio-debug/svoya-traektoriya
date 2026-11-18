@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /_tools/
+Disallow: /_qa/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&yclid&fbclid
+
+Sitemap: https://svoya-traektoriya.ru/sitemap.xml
+Host: svoya-traektoriya.ru

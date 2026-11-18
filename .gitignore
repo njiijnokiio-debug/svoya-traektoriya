@@ -1,0 +1,9 @@
+# Служебные файлы ОС и редакторов
+.DS_Store
+Thumbs.db
+desktop.ini
+*.log
+
+# Временные артефакты сборки и проверок
+node_modules/
+.cache/
