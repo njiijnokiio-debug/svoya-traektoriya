@@ -18,6 +18,17 @@ python -m http.server 4173
 
 Открывать нужно корень проекта, а не отдельные HTML-файлы: пути к стилям и картинкам рассчитаны на структуру папок.
 
+## Публикация на GitHub Pages
+
+- Репозиторий: <https://github.com/njiijnokiio-debug/svoya-traektoriya>
+- Демо-версия: <https://njiijnokiio-debug.github.io/svoya-traektoriya/>
+- Источник публикации: ветка `main`, корень репозитория.
+- Служебные папки `_tools/` и `_qa/` на GitHub Pages не публикуются (Jekyll исключает каталоги с `_`).
+
+Важно: canonical, Open Graph и sitemap сейчас указывают на будущий домен `https://svoya-traektoriya.ru`. Для демо-версии на GitHub Pages это нормально, но перед запуском на реальном домене замените `SITE` в `_tools/layout.js` и пересоберите сайт. Если основной площадкой останется GitHub Pages, укажите там адрес `https://njiijnokiio-debug.github.io/svoya-traektoriya/`.
+
+Для подключения своего домена добавьте файл `CNAME` с доменом в корень репозитория и настройте DNS по инструкции GitHub Pages.
+
 ## Структура
 
 ```
