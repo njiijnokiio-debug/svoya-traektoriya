@@ -26,19 +26,6 @@
     return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   };
 
-  /* ---------- Баннер переименования ---------- */
-  function initNameBanner() {
-    var banner = $('[data-name-banner]');
-    if (!banner) return;
-    var close = $('[data-name-banner-close]', banner);
-    if (close) {
-      close.addEventListener('click', function () {
-        banner.hidden = true;
-        store.setRaw('st_name_banner_hidden', '1');
-      });
-    }
-  }
-
   /* ---------- Шапка и мобильное меню ---------- */
   function initHeader() {
     var header = $('[data-header]');
@@ -605,19 +592,35 @@
       }
     });
 
-    var banner = $('[data-name-banner]');
-    if (banner && overrides.banner && overrides.banner.enabled && overrides.banner.text) {
+    if (overrides.banner && overrides.banner.enabled && overrides.banner.text) {
+      var key = 'st_banner_' + overrides.banner.text.slice(0, 40);
+      if (store.getRaw(key) === '1') return;
+      var header = $('.site-header');
+      if (!header) return;
+      var banner = $('[data-name-banner]');
+      if (!banner) {
+        banner = document.createElement('div');
+        banner.className = 'name-banner';
+        banner.setAttribute('data-name-banner', '');
+        banner.innerHTML =
+          '<div class="container name-banner__inner">' +
+            '<p><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-info"></use></svg><span></span></p>' +
+            '<button class="name-banner__close" type="button" data-name-banner-close aria-label="Скрыть сообщение">' +
+              '<svg class="icon" aria-hidden="true" focusable="false"><use href="#i-close"></use></svg>' +
+            '</button>' +
+          '</div>';
+        header.parentNode.insertBefore(banner, header);
+      }
       var textEl = banner.querySelector('p span');
-      if (textEl) {
-        textEl.innerHTML = esc(overrides.banner.text) +
-          (overrides.banner.link ? ' <a href="' + esc(overrides.banner.link) + '">' + esc(overrides.banner.label || 'Подробнее') + '</a>' : '');
-        banner.hidden = false;
-        var key = 'st_banner_' + overrides.banner.text.slice(0, 40);
-        if (store.getRaw(key) === '1') banner.hidden = true;
-        var close = $('[data-name-banner-close]', banner);
-        if (close) {
-          close.addEventListener('click', function () { store.setRaw(key, '1'); });
-        }
+      if (!textEl) return;
+      textEl.innerHTML = esc(overrides.banner.text) +
+        (overrides.banner.link ? ' <a href="' + esc(overrides.banner.link) + '">' + esc(overrides.banner.label || 'Подробнее') + '</a>' : '');
+      var close = $('[data-name-banner-close]', banner);
+      if (close) {
+        close.addEventListener('click', function () {
+          banner.hidden = true;
+          store.setRaw(key, '1');
+        });
       }
     }
   }
@@ -647,7 +650,6 @@
   }
 
   ready(function () {
-    initNameBanner();
     initHeader();
     initDropdowns();
     initPhones();
